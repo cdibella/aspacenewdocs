@@ -9,21 +9,27 @@ Converting the container data model in version 1.4.2 and earlier versions of Arc
 
 ##Frequently Asked Questions
 *How will my data be converted to the new model?*
+
 When your installation is upgraded to 1.5.0, the conversion will happen as part of the upgrade process.
 
 *Can I continue to use the current model for containers and not convert to the new model?*
+
 Because it is such a substantial improvement (see separate announcement for the new features), the new model is required for all using ArchivesSpace 1.5.0 and higher. The only way to continue using the current model is to never upgrade beyond 1.4.2.
 
 *What if I’m already using the container management plugin made available to the community by Yale University?*
+
 Conversion of data created using the Yale container management plugin, or a local adaptation of the plugin, will also happen as part of the process of upgrading to 1.5.0. Some steps will be skipped when they are not needed.  At the end of the process, the new container data model will be integrated into your ArchivesSpace and will not need to be loaded or maintained as a plugin.  
 
 *I haven’t moved from Archivists’ Toolkit or Archon yet and am planning to use the associated migration tool. Can I migrate directly to 1.5.0?*
+
 No, you must migrate to 1.4.2 or earlier versions and then upgrade your installation to 1.5.0 according to the instructions provided here.
 
 *What changes are being made to the previous model for containers?*
+
 The biggest change is the new concept of top containers. A top container is the highest level container in which a particular instance is stored. Top containers are in some ways analogous to the current Container 1, but broken out from the entire container record (child and grandparent container records).  As such, top containers enable more efficient recording and updating of the highest level containers in your collection.
 
 *How does ArchivesSpace determine what is a top container?*
+
 During the conversion, ArchivesSpace will find all the Container 1s in your current ArchivesSpace database. It will then evaluate them as follows:
 * If containers have barcodes, one top container is created for each unique Container 1 barcode.
 * If containers do not have barcodes, one top container is created for each unique combination of container 1 indicator and container type 1.
@@ -32,6 +38,7 @@ During the conversion, ArchivesSpace will find all the Container 1s in your curr
 ##Preparation
 
 *What can I do to prepare my ArchivesSpace data for a smoother conversion to top containers?*
+
 * If your Container 1s have unique barcodes, you do not need to do anything except verify that your data is complete and accurate. You should run a preliminary conversion as described in the Conversion section and resolve any errors.
 * If your Container 1s do not have barcodes, but have a nonduplicative container identifer sequence within each accession or resource (e.g. Box 1, Box 2, Box 3), or the identifiers are only reused within an accession or resource for different types of containers (for example, you have a Box 1 through 10 and an Oversize Box 1 through 3) you do not need to do anything except verify that your data is complete and accurate. You should run a preliminary conversion as described in the Conversion section and resolve any errors.
 * If your Container 1s do not have barcodes and you have parallel numbering sequences, where the same indicators and types are used to refer to different containers within the same accession or resource within some or all accessions or resources (for example, you have a Box 1 in series 1 and a different Box 1 in series 5) you will need to find a way to uniquely identify these containers. One option is to run this barcoder plugin for each resource to which this applies. The barcoder plugin creates barcodes that combine the ID of the highest level archival object ancestor with the container 1 type and indicator. (The barcoder plugin is designed to run against one resource at a time, instead of against all resources, because not all resources in a repository may match this condition.) Once you’ve differentiated your containers with parallel number sequences, you should run a preliminary conversion as described in the Conversion section and resolve any errors.
@@ -41,6 +48,7 @@ You do not need to make any changes to Container 2 fields or Container 3 fields.
 If you use the current Container Extent fields, these will no longer be available in 1.5.0. Any data in these fields will be migrated to a new Extent sub-record during the conversion. You can evaluate whether this data should remain in an extent record or if it belongs in a container profile or other fields and then move it accordingly after the conversion is complete.
 
 *I have EADs I still need to import into ArchivesSpace. How can I get them ready for this new model?*
+
 If you have a box and folder associated with a component (or any other hierarchical relationship of containers), you will need to add identifiers to the container element so that the EAD importer knows which is the top container. If you previously used Archivists' Toolkit to create EAD, your containers probably already have container identifiers. If your container elements do not have identifiers already, Yale University has made available an XSLT transformation file to add them. You will need to run it before importing the EAD file into ArchivesSpace. 
 
 ##Conversion
