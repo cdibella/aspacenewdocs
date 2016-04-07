@@ -1,4 +1,4 @@
-**What is the new functionality related to containers and container management in 1.5.0?**
+#What is the new functionality related to containers and container management in 1.5.0?
 
 * **Top containers replace Container 1s.** Unlike Container 1s in the current version of ArchivesSpace, top containers in the upcoming version can be defined once and linked many times to various archival objects, resources, and accessions. 
 
