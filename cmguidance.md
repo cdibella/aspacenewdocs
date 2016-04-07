@@ -60,11 +60,11 @@ Because this is a major change in the data model for this portion of the applica
 * Follow the upgrade instructions to unpack a fresh copy of the v 1.5.0 release made available for testing, copy your configuration and data files, and transfer your locales.
 * Follow the upgrade instructions to run the database migrations. As part of this step, your container data will be converted to the new data model. You can follow along in the log. Windows users can open the archivesspace.out file in a tool like Notepad ++. Mac users can do a tail –f logs/archivesspace.out to get a live update from the log.
 * When the test conversion has been completed, the log will indicate "Completed: existing containers have been migrated to the new container model." 
- ![Image of Conversion](https://github.com/cdibella/aspacenewdocs/ConversionLog.png)
-•	Open ArchivesSpace via your browser and login.
-•	Retrieve the error report from the Background Jobs area to the upgraded version:
-o	Select Background Jobs from the Settings menu.
-
+ ![Image of Conversion Log](https://github.com/cdibella/aspacenewdocs/blob/master/ConversionLog.png)
+*Open ArchivesSpace via your browser and login.
+*Retrieve the error report from the Background Jobs area to the upgraded version:
+*Select Background Jobs from the Settings menu.
+![Image of Background Jobs](https://github.com/cdibella/aspacenewdocs/blob/master/BackgroundJobs.png)
  
 
 o	The first item listed under Archived Jobs after completing the upgrade should be container_conversion_job. Click View. 
