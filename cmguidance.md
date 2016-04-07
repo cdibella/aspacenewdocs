@@ -64,7 +64,7 @@ Because this is a major change in the data model for this portion of the applica
  ![Image of Conversion Log](https://github.com/cdibella/aspacenewdocs/blob/master/ConversionLog.png)
 
 * Open ArchivesSpace via your browser and login.
-* Retrieve the error report from the Background Jobs area to the upgraded version:
+Retrieve the container conversion error report from the Background Jobs area:
 * Select Background Jobs from the Settings menu.
 
 ![Image of Background Jobs](https://github.com/cdibella/aspacenewdocs/blob/master/BackgroundJobs.png)
@@ -73,13 +73,11 @@ Because this is a major change in the data model for this portion of the applica
 
 ![Image of Background Jobs List](https://github.com/cdibella/aspacenewdocs/blob/master/BackgroundJobsList.png)
 
- 
 * Under Files, click File to download a CSV file with the errors and a brief explanation.
 
 ![Image of Files](https://github.com/cdibella/aspacenewdocs/blob/master/Files.png)
 
 ![Image of Error Report](https://github.com/cdibella/aspacenewdocs/blob/master/ErrorReport.png)
- 
  
 * Go back to your source data and correct any errors that you can before doing another test conversion.
 * When the error report shows no errors, or when you are satisfied with the remaining errors, your production instance is ready to be upgraded.
