@@ -91,7 +91,7 @@ Retrieve the container conversion error report from the Background Jobs area:
 * Container levels are skipped (for example, there is a Container 1 and a Container 3, but no Container 2).
 * A container has multiple locations.
  
-The conversion process can resolve some of these errors for you by supplying or deleting values it deems appropriate, but for the most control over the process you will most likely want to resolve such issues yourself in your ArchivesSpace database before converting to the new container model.
+The conversion process can resolve some of these errors for you by supplying or deleting values as it deems appropriate, but for the most control over the process you will most likely want to resolve such issues yourself in your ArchivesSpace database before converting to the new container model.
 
 *Are there any known conversion issues?*
 
