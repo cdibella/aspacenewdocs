@@ -41,7 +41,7 @@ During the conversion, ArchivesSpace will find all the Container 1s in your curr
 
 * If your Container 1s have unique barcodes, you do not need to do anything except verify that your data is complete and accurate. You should run a preliminary conversion as described in the Conversion section and resolve any errors.
 * If your Container 1s do not have barcodes, but have a nonduplicative container identifer sequence within each accession or resource (e.g. Box 1, Box 2, Box 3), or the identifiers are only reused within an accession or resource for different types of containers (for example, you have a Box 1 through 10 and an Oversize Box 1 through 3) you do not need to do anything except verify that your data is complete and accurate. You should run a preliminary conversion as described in the Conversion section and resolve any errors.
-* If your Container 1s do not have barcodes and you have parallel numbering sequences, where the same indicators and types are used to refer to different containers within the same accession or resource within some or all accessions or resources (for example, you have a Box 1 in series 1 and a different Box 1 in series 5) you will need to find a way to uniquely identify these containers. One option is to run this barcoder plugin for each resource to which this applies. The barcoder plugin creates barcodes that combine the ID of the highest level archival object ancestor with the container 1 type and indicator. (The barcoder plugin is designed to run against one resource at a time, instead of against all resources, because not all resources in a repository may match this condition.) Once you’ve differentiated your containers with parallel number sequences, you should run a preliminary conversion as described in the Conversion section and resolve any errors.
+* If your Container 1s do not have barcodes and you have parallel numbering sequences, where the same indicators and types are used to refer to different containers within the same accession or resource within some or all accessions or resources (for example, you have a Box 1 in series 1 and a different Box 1 in series 5) you will need to find a way to uniquely identify these containers. One option is to run this [barcoder plugin](https://github.com/archivesspace/barcoder) for each resource to which this applies. The barcoder plugin creates barcodes that combine the ID of the highest level archival object ancestor with the container 1 type and indicator. (The barcoder plugin is designed to run against one resource at a time, instead of against all resources, because not all resources in a repository may match this condition.) Once you’ve differentiated your containers with parallel number sequences, you should run a preliminary conversion as described in the Conversion section and resolve any errors.
  
 You do not need to make any changes to Container 2 fields or Container 3 fields. Data in these fields will be converted to the new Child and Grandchild container fields that map directly to these fields.
 
@@ -49,18 +49,18 @@ If you use the current Container Extent fields, these will no longer be availabl
 
 *I have EADs I still need to import into ArchivesSpace. How can I get them ready for this new model?*
 
-If you have a box and folder associated with a component (or any other hierarchical relationship of containers), you will need to add identifiers to the container element so that the EAD importer knows which is the top container. If you previously used Archivists' Toolkit to create EAD, your containers probably already have container identifiers. If your container elements do not have identifiers already, Yale University has made available an XSLT transformation file to add them. You will need to run it before importing the EAD file into ArchivesSpace. 
+If you have a box and folder associated with a component (or any other hierarchical relationship of containers), you will need to add identifiers to the container element so that the EAD importer knows which is the top container. If you previously used Archivists' Toolkit to create EAD, your containers probably already have container identifiers. If your container elements do not have identifiers already, Yale University has made available an [XSLT transformation file](https://github.com/YaleArchivesSpace/xslt-files/blob/master/EAD_add_IDs_to_containers.xsl) to add them. You will need to run it before importing the EAD file into ArchivesSpace. 
 
 ##Conversion
 
-When upgrading from 1.4.2 (and earlier versions) to 1.5.0, the container conversion will happen as part of the upgrade process. You will be able to follow its progress in the log. Instructions for upgrading from a previous version of ArchivesSpace are available at https://github.com/archivesspace/archivesspace/blob/c53b45df2b4bb2656c0d30f7223d63657e2987bb/UPGRADING_1.5.0.md. 
+When upgrading from 1.4.2 (and earlier versions) to 1.5.0, the container conversion will happen as part of the upgrade process. You will be able to follow its progress in the log. Instructions for upgrading from a previous version of ArchivesSpace are available at [https://github.com/archivesspace/archivesspace/blob/c53b45df2b4bb2656c0d30f7223d63657e2987bb/UPGRADING_1.5.0.md]. 
 
 Because this is a major change in the data model for this portion of the application, running at least one test conversion is very strongly recommended. Follow these steps to run the upgrade/conversion process:
-•	Create a backup of your ArchivesSpace instance to use for testing. IT IS ESSENTIAL THAT YOU NOT RUN THIS ON A PRODUCTION INSTANCE AS THE CONVERSION CHANGES YOUR DATA, and THE CHANGES CANNOT BE UNDONE EXCEPT BY REVERTING TO A BACKUP VERSION OF YOUR DATA PRIOR TO RUNNING THE CONVERSION.
-•	Follow the upgrade instructions to unpack a fresh copy of the v 1.5.0 release made available for testing, copy your configuration and data files, and transfer your locales.
-•	Follow the upgrade instructions to run the database migrations. As part of this step, your container data will be converted to the new data model. You can follow along in the log. Windows users can open the archivesspace.out file in a tool like Notepad ++. Mac users can do a tail –f logs/archivesspace.out to get a live update from the log.
-•	When the test conversion has been completed, the log will indicate “Completed: existing containers have been migrated to the new container model.” 
- 
+* Create a backup of your ArchivesSpace instance to use for testing. **IT IS ESSENTIAL THAT YOU NOT RUN THIS ON A PRODUCTION INSTANCE AS THE CONVERSION CHANGES YOUR DATA, and THE CHANGES CANNOT BE UNDONE EXCEPT BY REVERTING TO A BACKUP VERSION OF YOUR DATA PRIOR TO RUNNING THE CONVERSION.**
+* Follow the upgrade instructions to unpack a fresh copy of the v 1.5.0 release made available for testing, copy your configuration and data files, and transfer your locales.
+* Follow the upgrade instructions to run the database migrations. As part of this step, your container data will be converted to the new data model. You can follow along in the log. Windows users can open the archivesspace.out file in a tool like Notepad ++. Mac users can do a tail –f logs/archivesspace.out to get a live update from the log.
+* When the test conversion has been completed, the log will indicate "Completed: existing containers have been migrated to the new container model." 
+ ![Image of Conversion](https://octodex.github.com/images/yaktocat.png)
 •	Open ArchivesSpace via your browser and login.
 •	Retrieve the error report from the Background Jobs area to the upgraded version:
 o	Select Background Jobs from the Settings menu.
@@ -77,14 +77,16 @@ o	Under Files, click File to download a CSV file with the errors and a brief exp
 •	When the error report shows no errors, or when you are satisfied with the remaining errors, your production instance is ready to be upgraded.
 •	When the final upgrade/conversion is complete, you can move ArchivesSpace version 1.5.0 into production.
 
-What are some common errors or anomalies that will be flagged in the conversion?
-•	A container with a barcode has different indicators or types in different records.
-•	A container with a particular type and indicator sometimes has a barcode and sometimes doesn’t.
-•	A container is missing a type or indicator.
-•	Container levels are skipped (for example, there is a Container 1 and a Container 3, but no Container 2).
-•	A container has multiple locations.
+*What are some common errors or anomalies that will be flagged in the conversion?*
 
+* A container with a barcode has different indicators or types in different records.
+* A container with a particular type and indicator sometimes has a barcode and sometimes doesn’t.
+* A container is missing a type or indicator.
+* Container levels are skipped (for example, there is a Container 1 and a Container 3, but no Container 2).
+* A container has multiple locations.
+ 
 The conversion process can resolve some of these errors for you by supplying or deleting values it deems appropriate, but for the most control over the process you will most likely want to resolve such issues yourself in your ArchivesSpace database before converting to the new container model.
 
-Are there any known conversion issues?
-•	Due to a change in the ArchivesSpace EAD importer in 2015, some EADs with hierarchical containers not designated by a @parent attribute were turned into multiple instance records. This has since been corrected in the application, but we are working on a plugin that will enable you to turn these back into single instances so that subcontainers are not mistakenly turned into top containers.
+*Are there any known conversion issues?*
+
+Due to a change in the ArchivesSpace EAD importer in 2015, some EADs with hierarchical containers not designated by a @parent attribute were turned into multiple instance records. This has since been corrected in the application, but we are working on a plugin that will enable you to turn these back into single instances so that subcontainers are not mistakenly turned into top containers.
