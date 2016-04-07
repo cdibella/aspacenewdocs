@@ -4,19 +4,20 @@ With version 1.5.0, ArchivesSpace is adopting a new data model that will enable 
 * Repositories already using ArchivesSpace as a production application will need to upgrade their ArchivesSpace applications to the version 1.5.0.  (This upgrade / conversion must be done to take advantage of any other new features / bug fixes in ArchivesSpace 1.5.0 or later versions.)
 * Repositories not yet using ArchivesSpace in production but needing to migrate data from the Archivists’ Toolkit or Archon will need to migrate their data to version 1.4.2 of ArchivesSpace or earlier and then upgrade that version to version 1.5.0.  (This can be done with your repository is ready to migrate to ArchivesSpace.) 
 * Repositories not yet using ArchivesSpace in production and not needing to migrate data from the Archivists’ Toolkit or Archon can start using Archivists 1.5.0 without the need of upgrading.  (People in this situation do not need to read any further.)
+ 
 Converting the container data model in version 1.4.2 and earlier versions of ArchivesSpace to the 1.5.0 version has some complexity and may not accommodate all the various ways in which container information has been recorded by diverse repositories.  As a consequence, upgrading from a pre-1.5.0 version of ArchivesSpace requires planning for the upgrade, reviewing the results, and, possibly, remediating data either prior to or after the final conversion process.  Because of all the variations in which container information can be recorded, it is impossible to know all the ways the data of repositories will be impacted.  For this reason, all repositories upgrading their ArchivesSpace to version 1.5.0 should do so with a backup of their production ArchivesSpace instance and in a test environment. A conversion may only be undone by reverting back to the source database.
 
 ##Frequently Asked Questions
 *How will my data be converted to the new model?*
 When your installation is upgraded to 1.5.0, the conversion will happen as part of the upgrade process.
 
-Can I continue to use the current model for containers and not convert to the new model?
+*Can I continue to use the current model for containers and not convert to the new model?*
 Because it is such a substantial improvement (see separate announcement for the new features), the new model is required for all using ArchivesSpace 1.5.0 and higher. The only way to continue using the current model is to never upgrade beyond 1.4.2.
 
-What if I’m already using the container management plugin made available to the community by Yale University?
+*What if I’m already using the container management plugin made available to the community by Yale University?*
 Conversion of data created using the Yale container management plugin, or a local adaptation of the plugin, will also happen as part of the process of upgrading to 1.5.0. Some steps will be skipped when they are not needed.  At the end of the process, the new container data model will be integrated into your ArchivesSpace and will not need to be loaded or maintained as a plugin.  
 
-I haven’t moved from Archivists’ Toolkit or Archon yet and am planning to use the associated migration tool. Can I migrate directly to 1.5.0?
+*I haven’t moved from Archivists’ Toolkit or Archon yet and am planning to use the associated migration tool. Can I migrate directly to 1.5.0?*
 No, you must migrate to 1.4.2 or earlier versions and then upgrade your installation to 1.5.0 according to the instructions provided here.
 
 What changes are being made to the previous model for containers?
